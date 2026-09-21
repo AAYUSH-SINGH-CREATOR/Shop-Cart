@@ -1,10 +1,19 @@
-
+import { Routes, Route} from "react-router-dom"
+import Navbar from "./components/Navbar"
+import Home from "./pages/Home"
+import Cart from "./pages/Cart"
 
 export default function App(){
 
   return(
-    <div>
-      <p className="text-green-500 text-4xl text-center">hello world</p>
+  <div>
+      <div>
+         <Navbar/>
+      </div>
+      <Routes>
+        <Route path="/" element={<Home/>}/>
+        <Route path="/cart" element={<Cart/>}/>
+      </Routes>
     </div>
   )
 }
