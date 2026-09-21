@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import Product from "../components/Product";
 
 export default function Home() {
     const [posts, setposts ] = useState([]);
@@ -22,7 +23,13 @@ export default function Home() {
     return (
        <div className="w-full flex justify-center">
         <div className="w-[80%] min-h-[100%] flex items-center justify-center">
-                     <p>this is home page</p>
+                      <div className="w-[100%] flex flex-wrap justify-center gap-5  m-4 mt-12"> 
+                    {
+                        posts.map((post)=>(
+                          <Product key={post.id} post = {post} />
+                        ))
+                    }
+                </div>
         </div >
         </div>
     )
