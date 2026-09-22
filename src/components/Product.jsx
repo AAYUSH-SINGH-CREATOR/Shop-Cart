@@ -1,11 +1,17 @@
+import { useDispatch, useSelector } from "react-redux"
+import { add, remove} from "../redux/slice/CartSlice";
+
 
 export default function Product({post}){
+    const dispatch = useDispatch();
+    const cart = useSelector((state)=>state.cart);
+    //  console.log(`cart: ${cart}`);
     const addtocart=()=>{
-     console.log("added")
+    dispatch(add(post));
     }
 
     const removefromcart = () =>{
-     console.log("removed");
+        dispatch(remove(post.id));
     }
 
     return(
@@ -25,7 +31,7 @@ export default function Product({post}){
                 </div>
                 <div className="flex items-center">
                    <p className="border p-2 rounded-4xl group-hover:bg-gray-700 group-hover:text-amber-50 transition-all duration-500">
- <button onClick={removefromcart}>remove item</button> : <button onClick={addtocart}>Add to Cart</button>
+                    {cart.some((p)=> p.id === post.id) ? <button onClick={removefromcart}>remove item</button> : <button onClick={addtocart}>Add to Cart</button>}
                    </p>
                 </div>
             </div>
